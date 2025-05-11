@@ -1,0 +1,15 @@
+meta {
+  name: V1: Get Category
+  type: http
+  seq: 2
+}
+
+get {
+  url: http://localhost:5005/api/v1/category/:categoryId
+  body: none
+  auth: inherit
+}
+
+params:path {
+  categoryId: 0
+}
