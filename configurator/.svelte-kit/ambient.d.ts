@@ -57,8 +57,8 @@ declare module '$env/static/private' {
 	export const LS_COLORS: string;
 	export const npm_lifecycle_script: string;
 	export const DEBIAN_FRONTEND: string;
-	export const npm_lifecycle_event: string;
 	export const npm_package_version: string;
+	export const npm_lifecycle_event: string;
 	export const LESSCLOSE: string;
 	export const npm_config_globalconfig: string;
 	export const npm_config_init_module: string;
@@ -71,6 +71,7 @@ declare module '$env/static/private' {
 	export const DB_USER: string;
 	export const INIT_CWD: string;
 	export const EDITOR: string;
+	export const NODE_ENV: string;
 }
 
 /**
@@ -133,8 +134,8 @@ declare module '$env/dynamic/private' {
 		LS_COLORS: string;
 		npm_lifecycle_script: string;
 		DEBIAN_FRONTEND: string;
-		npm_lifecycle_event: string;
 		npm_package_version: string;
+		npm_lifecycle_event: string;
 		LESSCLOSE: string;
 		npm_config_globalconfig: string;
 		npm_config_init_module: string;
@@ -147,6 +148,7 @@ declare module '$env/dynamic/private' {
 		DB_USER: string;
 		INIT_CWD: string;
 		EDITOR: string;
+		NODE_ENV: string;
 		[key: `PUBLIC_${string}`]: undefined;
 		[key: `${string}`]: string | undefined;
 	}
