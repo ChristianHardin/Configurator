@@ -1,9 +1,25 @@
 <script>
 	import { Navbar, NavBrand, Button, Card } from "flowbite-svelte";
 	import { DarkMode } from "flowbite-svelte";
+	import {
+		CirclePlusSolid,
+		LockOpenSolid,
+		LockSolid,
+	} from "flowbite-svelte-icons";
 	import logo from "$lib/assets/logo.png";
 
-	let subitems = [];
+	let currentCategory = null;
+	let editMode = false;
+	let categories = [{ name: "item 01" }, { name: "item 02" }];
+	let subcategories = [];
+
+	function editClickHandler() {
+		editMode = !editMode;
+	}
+
+	function addCategoryHandler() {
+		console.log("Add Category Handler");
+	}
 </script>
 
 <div class="h-screen m-0 flex flex-col">
@@ -17,7 +33,24 @@
 			>
 		</NavBrand>
 		<div class="flex justify-center items-center gap-4">
-			<h1>test</h1>
+			<!-- Edit Mode Selector -->
+			{#if editMode}
+				<div
+					class="text-primary-500 dark:text-primary-600 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-hidden rounded-lg text-sm p-2.5 border dark:border-gray-800"
+					onclick={editClickHandler}
+				>
+					<LockOpenSolid />
+				</div>
+			{:else}
+				<div
+					class="text-primary-500 dark:text-primary-600 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-hidden rounded-lg text-sm p-2.5 border dark:border-gray-800"
+					onclick={editClickHandler}
+				>
+					<LockSolid />
+				</div>
+			{/if}
+
+			<!-- Darkmode Selector -->
 			<DarkMode
 				class="text-primary-500 dark:text-primary-600 border dark:border-gray-800"
 			/>
@@ -26,18 +59,21 @@
 
 	<div class="flex m-4 mt-0 flex-1 overflow-hidden gap-1">
 		<!-- Sidebar -->
-		<Card class="p-4 overflow-y-auto w-auto max-w-auto">
-			<div></div>
+		<Card class="p-4 overflow-y-auto w-auto max-w-auto flex gap-1">
+			{#each categories as item}
+				<Button>{item.name}</Button>
+			{/each}
+
+			{#if editMode}
+				<Button onclick={addCategoryHandler}>
+					Add Category <CirclePlusSolid class="ms-2 h-5 w-5" />
+				</Button>
+			{/if}
 		</Card>
 
 		<!-- Content -->
 		<Card class="flex-1 p-4 overflow-y-auto w-auto max-w-auto">
-			{#if subitems.length === 0}
-				<Card class="p-4 sm:p-6 md:p-8">
-					<h5>You have no Categories.</h5>
-					<Button>Create one now.</Button>
-				</Card>
-			{/if}
+			<div></div>
 		</Card>
 	</div>
 </div>
